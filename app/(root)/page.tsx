@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div className="text-white text-heading2-semibold">Threads</div>;
+  return <div className="head-text">Threads</div>;
 }
