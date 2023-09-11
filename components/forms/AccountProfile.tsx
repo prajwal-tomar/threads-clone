@@ -25,6 +25,7 @@ import { isBase64Image } from "@/lib/utils";
 import { UserValidation } from "@/lib/validations/user";
 import { updateUser } from "@/lib/actions/user.action";
 
+// the declare the type of prop that we will be receiving from the parent
 interface Props {
   user: {
     id: string;
@@ -44,9 +45,11 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
   const [files, setFiles] = useState<File[]>([]);
 
-  const form = useForm<z.infer<typeof UserValidation>>({
-    resolver: zodResolver(UserValidation),
-    defaultValues: {
+  // this is how we create a form using shadcn
+  // zod is used for form validation
+  const form = useForm({
+    resolver: zodResolver(UserValidation), // call the validation page from lib to validate the form
+    defaultValues: { // this assigns default values as the onboarded page is populated already with our data which we collected when the user signed in.
       profile_photo: user?.image ? user.image : "",
       name: user?.name ? user.name : "",
       username: user?.username ? user.username : "",

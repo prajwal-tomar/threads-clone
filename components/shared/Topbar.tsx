@@ -2,7 +2,7 @@ import { OrganizationSwitcher, SignOutButton } from "@clerk/nextjs";
 import { SignedIn } from "@clerk/nextjs/app-beta";
 import Image from "next/image";
 import Link from "next/link";
-import {dark} from '@clerk/themes'
+import { dark } from "@clerk/themes";
 
 function Topbar() {
   return (
@@ -16,6 +16,7 @@ function Topbar() {
         </Link>
 
         <div className="flex items-center gap-1">
+          {/* the below class is used to display only on mobile phones and not on md+ devices like laptops or computers */}
           <div className="block md:hidden">
             <SignedIn>
               {/* The code below will show only if the user is signed in */}
@@ -35,6 +36,7 @@ function Topbar() {
           {/* the below is used to take care of Organizations */}
           <OrganizationSwitcher
             appearance={{
+              // gotta install this package from clerk to make our code compatible for dark modes
               baseTheme: dark,
               elements: {
                 organizationSwitcherTrigger: "py-2 px-4",

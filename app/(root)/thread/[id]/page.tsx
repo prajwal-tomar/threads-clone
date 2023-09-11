@@ -6,6 +6,8 @@ import ThreadCard from "@/components/cards/ThreadCard";
 
 // import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
+import { fetchUser } from "@/lib/actions/user.action";
+import Comment from "@/components/forms/Comment";
 
 export const revalidate = 0;
 
@@ -15,8 +17,8 @@ async function page({ params }: { params: { id: string } }) {
   const user = await currentUser();
   if (!user) return null;
 
-  // const userInfo = await fetchUser(user.id);
-  // if (!userInfo?.onboarded) redirect("/onboarding");
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
 
   const thread = await fetchThreadById(params.id);
 
@@ -35,13 +37,13 @@ async function page({ params }: { params: { id: string } }) {
         />
       </div>
 
-      {/* <div className='mt-7'>
+      <div className='mt-7'>
         <Comment
           threadId={params.id}
           currentUserImg={user.imageUrl}
           currentUserId={JSON.stringify(userInfo._id)}
         />
-      </div> */}
+      </div>
 
       <div className='mt-10'>
         {thread.children.map((childItem: any) => (

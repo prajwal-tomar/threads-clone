@@ -1,13 +1,12 @@
 import ThreadCard from "@/components/cards/ThreadCard";
 import { fetchPosts } from "@/lib/actions/thread.actions";
-import { currentUser } from "@clerk/nextjs";
-import React from "react";
+import { UserButton, currentUser } from "@clerk/nextjs";
 
 const page = async () => {
   const result = await fetchPosts(1, 30);
   const user = await currentUser();
   return (
-    <div>
+    <>
       <h1 className="head-text text-white">Home</h1>
       <section className="mt-9 flex flex-col gap-10">
         {result.posts.length === 0 ? (
@@ -30,7 +29,7 @@ const page = async () => {
           </>
         )}
       </section>
-    </div>
+    </>
   );
 };
 

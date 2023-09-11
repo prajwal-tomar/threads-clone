@@ -7,9 +7,10 @@ async function Page() {
   const user = await currentUser();
   if (!user) return null; // to avoid typescript warnings
 
-  const userInfo = await fetchUser(user.id);
+  const userInfo = await fetchUser(user.id); // to get the user from the database
   if (userInfo?.onboarded) redirect("/");
 
+  // in the below userData, userInfo takes precedence as the data from the DB has the latest updated user.
   const userData = {
     id: user.id,
     objectId: userInfo?._id,

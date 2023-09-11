@@ -5,11 +5,10 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-// import { dark } from "@clerk/themes";
 
 import "../globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] }); // this is the way of importing fonts in next.js
 
 export const metadata: Metadata = {
   title: "Auth",
@@ -22,13 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    // Follow Clerk documentation. It has all the steps to configure clerk easily.
     <ClerkProvider
-    //   appearance={{
-    //     baseTheme: dark,
-    //   }}
     >
       <html lang="en">
-        <body className={`${inter.className} bg-dark-1`}>{children}</body>
+        <body className={`${inter.className} bg-dark-1 grid place-content-center min-h-screen`}>{children}</body>
       </html>
     </ClerkProvider>
   );
