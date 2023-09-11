@@ -8,15 +8,11 @@ import Topbar from "@/components/shared/Topbar";
 import Leftbar from "@/components/shared/Leftbar";
 import Rightbar from "@/components/shared/Rightbar";
 import Bottombar from "@/components/shared/Bottombar";
-// import LeftSidebar from "@/components/shared/LeftSidebar";
-// import Bottombar from "@/components/shared/Bottombar";
-// import RightSidebar from "@/components/shared/RightSidebar";
-// import Topbar from "@/components/shared/Topbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Threads",
+  title: "Threads Clone",
   description: "A Next.js 13 Meta Threads application",
 };
 
